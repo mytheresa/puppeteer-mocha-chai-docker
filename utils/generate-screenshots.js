@@ -11,7 +11,7 @@ urls.forEach(async (url) => {
     });
     await page.screenshot({
         fullPage: true,
-        path: '/validator/screenshots/' + msg.replace(/^.*\/\/[^\/]+/, '').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_').replace(/(\.html)|(\.htm)|(\.php)/, '').substr(1); + '.png'
+        path: '/validator/screenshots/' + msg.replace(/^.*\/\/[^\/]+/, '').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_').replace(/(\.html)|(\.htm)|(\.php)/, '').substr(1) + '.png'
     });
     await browser.close();
 });
