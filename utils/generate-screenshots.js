@@ -23,6 +23,11 @@ urls.forEach(async (url) => {
     await page.setCookie(...cookies);
     const cookiesSet = await page.cookies(url);
     console.log(JSON.stringify(cookiesSet));
+    const cookieAcceptBtn = await page.$("button.btn-all");
+    if (cookieAcceptBtn != null) {
+      cookieAcceptBtn.click()
+      await page.waitFor(1000)
+    }
     await page.screenshot({
         fullPage: true,
         path: '/validator/screenshots/' + url.replace(/^.*\/\/[^\/]+/, '').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_').replace(/(\.html)|(\.htm)|(\.php)/, '').substr(1) + '.png'
