@@ -21,6 +21,8 @@ urls.forEach(async (url) => {
         console.log('Generating screeshot for ' + url);
     });
     await page.setCookie(...cookies);
+    const cookiesSet = await page.cookies(url);
+    console.log(JSON.stringify(cookiesSet));
     await page.screenshot({
         fullPage: true,
         path: '/validator/screenshots/' + url.replace(/^.*\/\/[^\/]+/, '').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '_').replace(/(\.html)|(\.htm)|(\.php)/, '').substr(1) + '.png'
